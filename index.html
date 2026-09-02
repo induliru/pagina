@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDULIRU | Ingeniería en Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-oscuro: #0B1B3D;
+            --azul-medio: #1E3A8A;
+            --gris-fondo: #F3F4F6;
+            --gris-texto: #374151;
+            --gris-claro: #E5E7EB;
+            --dorado: #D4AF37;
+            --dorado-brillante: #F3CD5C;
+            --blanco: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        header {
+            background-color: var(--azul-oscuro);
+            border-bottom: 3px solid var(--dorado);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .brand {
+            color: var(--blanco);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .brand span {
+            color: var(--dorado);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--dorado);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+            color: var(--blanco);
+            padding: 10rem 2rem 6rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gris-claro);
+            margin-bottom: 2.5rem;
+        }
+
+        .badge-utn {
+            background-color: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--dorado);
+            color: var(--dorado-brillante);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--dorado);
+            color: var(--azul-oscuro);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dorado-brillante);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--blanco);
+            border: 2px solid var(--blanco);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--dorado);
+            margin: 0.5rem auto 0 auto;
+        }
+
+        .about {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            padding: 3.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-top: -3rem;
+            position: relative;
+            z-index: 10;
+            border-top: 4px solid var(--dorado);
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background-color: var(--blanco);
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            border: 1px solid var(--gris-claro);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--dorado);
+            box-shadow: 0 10px 15px -3px rgba(11, 27, 61, 0.05);
+        }
+
+        .card h3 {
+            color: var(--azul-oscuro);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+        }
+
+        .youtube-section {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            border-radius: 8px;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            border-left: 5px solid var(--dorado);
+        }
+
+        .youtube-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .youtube-section p {
+            color: var(--gris-claro);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn-youtube {
+            background-color: #FF0000;
+            color: var(--blanco);
+            border: none;
+        }
+
+        .btn-youtube:hover {
+            background-color: #CC0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+        }
+
+        footer {
+            background-color: #061026;
+            color: var(--gris-claro);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .btn {
+                display: block;
+                margin: 1rem auto !important;
+                max-width: 250px;
+            }
+            .about {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="brand">INDULIRU<span>.</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#comunidad">Comunidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="badge-utn">Ingenieros en Sistemas - UTN</div>
+            <h1>Transformamos ideas complejas en software a medida</h1>
+            <p>Soluciones tecnológicas robustas, escalables y diseñadas exclusivamente para optimizar tu negocio.</p>
+            <a href="#servicios" class="btn btn-primary">Nuestros Servicios</a>
+            <a href="#comunidad" class="btn btn-secondary">Ver YouTube</a>
+        </div>
+    </div>
+
+    <section id="nosotros">
+        <div class="about">
+            <p>Somos un equipo de <strong>Ingenieros en Sistemas de Información egresados de la UTN</strong>. Combinamos rigor académico, metodologías ágiles y pasión por el código para desarrollar software robusto que impulsa el crecimiento de empresas y emprendimientos.</p>
+        </div>
+    </section>
+
+    <section id="servicios">
+        <h2 class="section-title">Lo Que Hacemos</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Software a Medida</h3>
+                <p>Diseñamos y construimos aplicaciones web y móviles desde cero, adaptadas al 100% a los procesos específicos de tu organización.</p>
+            </div>
+            <div class="card">
+                <h3>Arquitectura Escalable</h3>
+                <p>Creamos sistemas preparados para soportar el crecimiento de tu negocio, garantizando alta disponibilidad, seguridad y rendimiento.</p>
+            </div>
+            <div class="card">
+                <h3>Consultoría IT</h3>
+                <p>Analizamos tu infraestructura actual y te asesoramos en la adopción de nuevas tecnologías para optimizar costos y flujos de trabajo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="comunidad">
+        <div class="youtube-section">
+            <h2>Compartimos Nuestro Conocimiento</h2>
+            <p>Además de codear, nos apasiona la educación. En nuestro canal de YouTube subimos videotutoriales sobre programación, arquitectura de sistemas y buenas prácticas de ingeniería.</p>
+            <a href="#" target="_blank" class="btn btn-youtube">Ir al Canal de YouTube</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 INDULIRU. Todos los derechos reservados. Desarrollado por Ingenieros de la UTN.</p>
+    </footer>
+
+</body>
+</html>
